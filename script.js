@@ -44,6 +44,9 @@ textArea.addEventListener("keypress", (e) =>{
 function countChars(obj){
     var maxLength = 100;
     var strLength = obj.value.length;
+    if(maxLength-strLength<10){
+        document.getElementById("remaining-characters").innerHTML = '<span style="color: red;">'+(maxLength-strLength)+'</span>' + " characters remaining.";
+    }else
     if(strLength <= maxLength){
         document.getElementById("remaining-characters").innerHTML = maxLength - strLength +" characters remaining."
     }
