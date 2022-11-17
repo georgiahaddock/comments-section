@@ -8,12 +8,14 @@
 </head>
 
 <body>
-
+    <div id=photo-generator>
+        <img id="random-photo" src="https://picsum.photos/200">
+    </div>
     <form id="form">
-        <p id="comments-title">Write your comments here</p>
+        <p id="comments-title">Write a comment</p>
         <textarea type="text" id="comment-box" name="comment-box" placeholder="Max 100 characters" onkeyup="countChars(this);" maxlength="100"></textarea>
         <p id="remaining-characters">100 characters remaining.</p>
-        <button type="submit-button" id="submit-button">Submit</button>
+        <button type="submit-button" id="submit-button">submit</button>
     </form>
 
     <footer id="below">
