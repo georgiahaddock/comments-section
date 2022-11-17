@@ -1,8 +1,10 @@
 const form = document.querySelector("#form");
 const textArea = document.querySelector("#comment-box");
+var noOfComments = 0;
+var noOfLikes = 0;
 
 function createCommentBlock(text){
-    console.log(1);
+    noOfComments +=1;
     //create comment div
     let div = document.createElement("div");
     div.classList.add("comment-block");
@@ -18,48 +20,49 @@ function createCommentBlock(text){
     let replyButton = document.createElement("button");
     replyButton.classList.add("reply-button");
     replyButton.innerText = "Reply";
+
+    //add like button
+    let likeButton = document.createElement("button");
+    //likeButton.classList.add("like-button");
+    likeButton.innerText = "Like";
     //put them all together
     div.appendChild(username);
     div.appendChild(comment);
-    comment.appendChild(replyButton);
+    div.appendChild(replyButton);
+    div.appendChild(likeButton);
     //publish to page
-    const publishedComments = document.getElementById("published-comments")
+    const publishedComments = document.getElementById("published-comments");
     publishedComments.appendChild(div);
-    console.log(2);
 }
+
+//like the photo
+document.querySelector("#like-button").addEventListener("click", (e) => {
+    noOfLikes ++;
+    let p = document.querySelector("#no-of-likes");
+    p.innerText = `Likes: ${noOfLikes}`;
+
+})
+
 
 
 // fn that allows user to submit a comment on clicking submit
 form.addEventListener("submit", (event) =>{
+    if(document.querySelector("#comment-box").value !== ""){
     event.preventDefault();
     const data = new FormData(form);
     createCommentBlock(data.get("comment-box"));
     document.querySelector("#comment-box").value = "";
+    }
 
 })
 //fn that allows user to submit a comment on pressing enter
 textArea.addEventListener("keypress", (e) =>{
-    if(e.key === "Enter" && !e.shiftKey){
-        const data = new FormData(form);
+    const data = new FormData(form);
+    if(e.key === "Enter" && !e.shiftKey && document.querySelector("#comment-box").value !== ""){
         createCommentBlock(data.get("comment-box"));
         document.querySelector("#comment-box").value = "";
     }
 })
-
-//fn that counts the no. of characters remaining and publishes
-// form.addEventListener("keyup", (e) => {
-//     e.preventDefault();
-//     //find out no.of remaining characters:
-//     const data = new FormData(form);
-//     const text = data.get("comment-box");
-//     let remainingCharacters = 100 - text.length;
-//     //publish this number to page:
-//     let number = document.createElement("p");
-//     number.innerText = remainingCharacters;
-//     let publishedComments = document.querySelector("#published-comments");
-//     publishedComments.appendChild(number);
-
-// } )
 
 function countChars(obj){
     var maxLength = 100;
