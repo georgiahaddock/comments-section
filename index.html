@@ -6,16 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comments Box</title>
 </head>
+
 <body>
-    <form id="form">Write your comments here <br>
-        <textarea type="text" id="comment-box" name="comment-box" placeholder="max 100 characters" onkeyup="countChars(this);" maxlength="100"></textarea>
-        <button type="submit-button">Submit</button>
+
+    <form id="form">
+        <p id="comments-title">Write your comments here</p>
+        <textarea type="text" id="comment-box" name="comment-box" placeholder="Max 100 characters" onkeyup="countChars(this);" maxlength="100"></textarea>
+        <p id="remaining-characters">100 characters remaining.</p>
+        <button type="submit-button" id="submit-button">Submit</button>
     </form>
-    <p id="remaining-characters">100 characters remaining.</p>
-    <p>Comments:</p>
-    <ul id="published-comments"></ul>
+
+    <footer id="below">
+        <p id="comments-title">Comments:</p>
+        <ul id="published-comments"></ul>
+    </footer>
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </body>
+
 </html>

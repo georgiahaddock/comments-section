@@ -1,28 +1,48 @@
 const form = document.querySelector("#form");
 const textArea = document.querySelector("#comment-box");
 
-//fn that adds submitted comments to the comments box
-function addComment(text){
+function createCommentBlock(text){
+    console.log(1);
+    //create comment div
+    let div = document.createElement("div");
+    div.classList.add("comment-block");
+    //create username title
+    let username = document.createElement("header");
+    username.innerText = "unknown user";
+    username.classList.add("username");
+    //add comment
+    let comment = document.createElement("div");
+    comment.classList.add("comment");
+    comment.innerText = text;
+    //add reply button
+    let replyButton = document.createElement("button");
+    replyButton.classList.add("reply-button");
+    replyButton.innerText = "Reply";
+    //put them all together
+    div.appendChild(username);
+    div.appendChild(comment);
+    comment.appendChild(replyButton);
+    //publish to page
     const publishedComments = document.getElementById("published-comments")
-    let newComment = document.createElement("p");
-    newComment.classList.add("comment-block")
-    newComment.innerText = text;
-    publishedComments.appendChild(newComment);
+    publishedComments.appendChild(div);
+    console.log(2);
 }
+
 
 // fn that allows user to submit a comment on clicking submit
 form.addEventListener("submit", (event) =>{
     event.preventDefault();
     const data = new FormData(form);
-    addComment(data.get("comment-box"));
+    createCommentBlock(data.get("comment-box"));
+    document.querySelector("#comment-box").value = "";
 
 })
 //fn that allows user to submit a comment on pressing enter
 textArea.addEventListener("keypress", (e) =>{
     if(e.key === "Enter" && !e.shiftKey){
-        e.preventDefault();
         const data = new FormData(form);
-        addComment(data.get("comment-box"));
+        createCommentBlock(data.get("comment-box"));
+        document.querySelector("#comment-box").value = "";
     }
 })
 

@@ -1,20 +1,73 @@
 body{
     font-family:Arial, Helvetica, sans-serif;
-    text-align: left
+    text-align: left;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    width: 60vw
+}
+
+#comment-title {
+    grid-row: 1;
+}
+
+#comment-box{
+    grid-row: 2;
+    width: 100%;
+    height: 20vh;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+#submit-button{
+    grid-row: 3;
+    background-color: aquamarine;
+    border-radius: 4px;
+    float: right;
+    width: 100%;
+}
+
+#remaining-characters{
+    font-style: italic;
+}
+
+#comments-title {
+    display: flex;
+    flex-direction: wrap;
+}
+
+#published-comments{
+    display: flex;
+    flex-wrap: wrap-reverse;
 }
 
 .comment-block{
     background-color: rgb(34, 38, 243);
-    width: 80vw;
     height: 15%;
     color: rgb(255, 255, 255);
-    border-radius: 5px;
-    transition: 0.5s;
+    border-radius: 8px;
+    float: left;
+    padding: 10px;
+    margin: 10px;
+    word-wrap: break-word;
+    width: 100%
 }
 
-#comment-box{
-    width: 40vw;
-    height: 40vh;
-    border-radius: 10%;
-    text-align: center;
+.username{
+    font-style: italic;
+    font-size: smaller;
+    color: beige;
+}
+
+.comment{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-size: smaller;
+    border-radius: 4px;
+    word-wrap: break-word;
+
+}
+
+.reply-button{
+    float: right;
 }
